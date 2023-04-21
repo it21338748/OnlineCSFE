@@ -5,6 +5,9 @@ export default function Product() {
   const [products, setProducts] = useState([]);
   const [priceRange, setPriceRange] = useState("All Price");
   const [category, setCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 8;
+
 
   useEffect(() => {
     async function fetchData() {
@@ -17,10 +20,12 @@ export default function Product() {
 
   const handlePriceRangeChange = (range) => {
     setPriceRange(range);
+    setCurrentPage(1)
   };
 
   const handleCategoryChange = (category) => {
     setCategory(category);
+    setCurrentPage(1)
     };
 
   const filterByPriceRange = () => {
@@ -50,8 +55,15 @@ export default function Product() {
         }
     };
     
-    const filteredProducts = () => filterByCategory().filter((product) => filterByPriceRange().includes(product));
-
+    const filteredProducts = () => {
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = startIndex + productsPerPage;
+      return filterByCategory()
+        .filter((product) => filterByPriceRange().includes(product))
+        .slice(startIndex, endIndex);
+    };
+    
+    
 
   return (
     <div className="container">
@@ -102,14 +114,18 @@ export default function Product() {
             <div className='row'>
             {filteredProducts().map(product => (
               <div className='col-md-3 image-container mt-4' key={product.id}>
-                <img src={product.image} alt={product.name} className='product-image-container' />
-                <h6 className='product-header'>{product.name}</h6>
-                <h7 className='product-description'>{product.description}</h7>
-                <h6 className='product-price'>{product.price}</h6>
-                <button className='text-white product-btn'>Add to Cart</button>
-              </div>
+              <img src={product.image} alt={product.name} className='product-image-container' />
+              <h6 className='product-header'>{product.name}</h6>
+              {/*<h7 className='product-description'>{product.description}</h7>*/}
+              <h6 className='product-price'>{product.price}</h6>
+              <button className='text-white product-btn'>Add to Cart</button>
+             </div>
             ))}
-            
+            <div className="pagination p-3 d-flex align-items-center justify-content-center">
+  <button className='previous-btn border-0' onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
+  <span className="mx-3">{currentPage}</span>
+  <button className='next-btn border-0' onClick={() => setCurrentPage(currentPage + 1)} disabled={filteredProducts().length < productsPerPage}>Next</button>
+</div>
             </div>
             </div>
             </div>

@@ -69,3 +69,20 @@
     border-radius: 1px;
     cursor: pointer;
 }
+
+
+  
+.previous-btn {
+    font-size: 18px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .next-btn {
+    font-size: 18px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
