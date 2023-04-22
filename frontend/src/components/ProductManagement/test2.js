@@ -8,6 +8,11 @@ export default function Test2() {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [mainImage, setMainImage] = useState("");
+  const [subImage1, setSubImage1] = useState("");
+  const [subImage2, setSubImage2] = useState("");
+  const [subImage3, setSubImage3] = useState("");
+
   const navigate = useNavigate()
 
   function handleSubmit(event) {
@@ -19,6 +24,10 @@ export default function Test2() {
       price: price,
       description: description,
       category: category,
+      image: mainImage,
+      image1: subImage1,
+      image2: subImage2,
+      image3: subImage3,
     };
 
     axios
@@ -78,42 +87,34 @@ export default function Test2() {
                   <hr class="mx-n3" />
                   <div class="row align-items-center py-3">
                     <div class="col-md-3 ps-5">
-                      <h6 class="mb-0">Main image</h6>
+                      <h6 class="mb-0">Main Image</h6>
                     </div>
                     <div class="col-md-9 pe-5">
-                      <input class="form-control form-control-lg" type="file" />
-                      <div class="small text-muted mt-2">Upload the image. Max file
-                        size 50 MB</div>
+                      <input type="text" class="form-control form-control-lg" placeholder="Input the image url here" onChange={(e) => setMainImage(e.target.value)} />
                     </div>
                   </div>
                   <div class="row align-items-center py-3">
                     <div class="col-md-3 ps-5">
-                      <h6 class="mb-0">Sub image 1</h6>
+                      <h6 class="mb-0">Sub Image 1</h6>
                     </div>
                     <div class="col-md-9 pe-5">
-                      <input class="form-control form-control-lg" type="file" />
-                      <div class="small text-muted mt-2">Upload the image. Max file
-                        size 50 MB</div>
+                      <input type="text" class="form-control form-control-lg" placeholder="Input the image url here" onChange={(e) => setSubImage1(e.target.value)} />
                     </div>
                   </div>
                   <div class="row align-items-center py-3">
                     <div class="col-md-3 ps-5">
-                      <h6 class="mb-0">Sub image 2</h6>
+                      <h6 class="mb-0">Sub Image 2</h6>
                     </div>
                     <div class="col-md-9 pe-5">
-                      <input class="form-control form-control-lg" type="file" />
-                      <div class="small text-muted mt-2">Upload the image. Max file
-                        size 50 MB</div>
+                      <input type="text" class="form-control form-control-lg" placeholder="Input the image url here" onChange={(e) => setSubImage2(e.target.value)} />
                     </div>
                   </div>
                   <div class="row align-items-center py-3">
                     <div class="col-md-3 ps-5">
-                      <h6 class="mb-0">Sub image 3</h6>
+                      <h6 class="mb-0">Sub Image 3</h6>
                     </div>
                     <div class="col-md-9 pe-5">
-                      <input class="form-control form-control-lg" type="file" />
-                      <div class="small text-muted mt-2">Upload the image. Max file
-                        size 50 MB</div>
+                      <input type="text" class="form-control form-control-lg" placeholder="Input the image url here" onChange={(e) => setSubImage3(e.target.value)} />
                     </div>
                   </div>
                   <hr class="mx-n3" />

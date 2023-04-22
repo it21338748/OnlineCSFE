@@ -5,6 +5,7 @@ import Test2 from "./components/ProductManagement/test2"
 import Test3 from "./components/ProductManagement/test3"
 import ProductManagement from "./components/ProductManagement/Management"
 import{BrowserRouter, Routes, Route} from "react-router-dom"
+import ViewProduct from "./components/ProductManagement/ViewProduct"
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/test" element={<Test/>}></Route>
         <Route path="/test2" element={<Test2/>}></Route>
         <Route path="/test3/:id" element={<Test3/>}></Route>
+        <Route path="/view-product/:id" element={<ViewProduct/>}></Route>
       </Routes>
     </BrowserRouter>
   );
