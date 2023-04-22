@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import '../../css/product.css';
+import { Link } from 'react-router-dom';
+
+
 
 export default function Product() {
   const [products, setProducts] = useState([]);
   const [priceRange, setPriceRange] = useState("All Price");
   const [category, setCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8;
-
+  const productsPerPage = 8;  
 
   useEffect(() => {
     async function fetchData() {
@@ -16,6 +18,7 @@ export default function Product() {
       setProducts(data);
     }
     fetchData();
+
   }, []);
 
   const handlePriceRangeChange = (range) => {
@@ -51,7 +54,7 @@ export default function Product() {
               return products.filter((product) => product.category === "Men's");
         }else if (category === 'Kids') {
               return products.filter((product) => product.category === "Kids");
-              
+
         }
     };
     
@@ -119,6 +122,7 @@ export default function Product() {
               {/*<h7 className='product-description'>{product.description}</h7>*/}
               <h6 className='product-price'>{product.price}</h6>
               <button className='text-white product-btn'>Add to Cart</button>
+              <Link to={`/product/${product._id}`}>View Details</Link>
              </div>
             ))}
             <div className="pagination p-3 d-flex align-items-center justify-content-center">
